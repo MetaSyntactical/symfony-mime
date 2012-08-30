@@ -16,12 +16,6 @@
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/http-foundation",
-            "version": "dev-master",
             "source-reference": "c61c023d2e9e9ad2edcc9227bd0ec5f79d616e18",
             "commit-date": "1346312580"
         }

@@ -1,0 +1,38 @@
+{
+    "hash": "ea88e9fc8a9a98153ee3ea69bdfa4720",
+    "packages": [
+        {
+            "package": "metasyntactical/io",
+            "version": "dev-master",
+            "source-reference": "667862d506fdbf41ef7bfdceccf7650b46283b45",
+            "commit-date": "1346179432"
+        },
+        {
+            "package": "metasyntactical/mime",
+            "version": "dev-master",
+            "source-reference": "5a31caba1d682c2895367e5f531ebf3c1c6e6b01",
+            "commit-date": "1346172970"
+        },
+        {
+            "package": "symfony/http-foundation",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/http-foundation",
+            "version": "dev-master",
+            "source-reference": "v2.1.0-RC2",
+            "commit-date": "1345643321"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "metasyntactical/mime": 20,
+        "symfony/http-foundation": 20
+    }
+}

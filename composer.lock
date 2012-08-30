@@ -22,8 +22,8 @@
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
-            "source-reference": "v2.1.0-RC2",
-            "commit-date": "1345643321"
+            "source-reference": "c61c023d2e9e9ad2edcc9227bd0ec5f79d616e18",
+            "commit-date": "1346312580"
         }
     ],
     "packages-dev": null,

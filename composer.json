@@ -2,7 +2,7 @@
     "name": "metasyntactical/symfony-mime",
     "type": "library",
     "description": "Helper component for hooking metasyntactical/mime into Symfony2 File Validation",
-    "keywords": ["library", "component", "symfony", "mime"],
+    "keywords": ["library", "component", "symfony", "mime", "tie-in", "validation"],
     "homepage": "http://syntactical-sugar.com/projects/symfony-mime",
     "license": "MIT",
     "authors": [

@@ -17,8 +17,8 @@
     ],
     "require": {
         "php": ">=5.3.10",
-        "metasyntactical/mime": "dev-master",
-        "symfony/http-foundation": "dev-master"
+        "metasyntactical/mime": "1.0.x",
+        "symfony/http-foundation": "2.1.x"
     },
     "autoload": {
         "psr-0": {

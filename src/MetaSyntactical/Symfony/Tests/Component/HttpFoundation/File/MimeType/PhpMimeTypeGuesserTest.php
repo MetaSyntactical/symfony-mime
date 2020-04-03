@@ -19,7 +19,7 @@ class PhpMimeTypeGuesserTest extends TestCase
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new PhpMimeTypeGuesser;
     }
@@ -28,14 +28,14 @@ class PhpMimeTypeGuesserTest extends TestCase
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
     }
 
     /**
      * @covers MetaSyntactical\Symfony\Component\HttpFoundation\File\MimeType\PhpMimeTypeGuesser::isSupported
      */
-    public function testGuesserIsSupported()
+    public function testGuesserIsSupported(): void
     {
         self::assertTrue(PhpMimeTypeGuesser::isSupported());
     }
@@ -43,7 +43,7 @@ class PhpMimeTypeGuesserTest extends TestCase
     /**
      * @covers MetaSyntactical\Symfony\Component\HttpFoundation\File\MimeType\PhpMimeTypeGuesser::guess
      */
-    public function testGuessingMimeTypeReturnsExpectedType()
+    public function testGuessingMimeTypeReturnsExpectedType(): void
     {
         $guess = $this->object->guess(__DIR__ . '/_Data/Fireworks_Australia_Day_11_-_2_(Public_Domain).jpg');
         self::assertEquals('image/jpeg', $guess);
@@ -52,7 +52,7 @@ class PhpMimeTypeGuesserTest extends TestCase
     /**
      * @covers MetaSyntactical\Symfony\Component\HttpFoundation\File\MimeType\PhpMimeTypeGuesser::guess
      */
-    public function testGuessingMimeTypeOfNonExistingFileResultsInException()
+    public function testGuessingMimeTypeOfNonExistingFileResultsInException(): void
     {
         $this->setExpectedException(
             'Symfony\\Component\\HttpFoundation\\File\\Exception\\FileNotFoundException',

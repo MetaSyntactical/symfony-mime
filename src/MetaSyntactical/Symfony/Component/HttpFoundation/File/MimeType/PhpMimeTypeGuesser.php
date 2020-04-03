@@ -2,7 +2,7 @@
 
 namespace MetaSyntactical\Symfony\Component\HttpFoundation\File\MimeType;
 
-use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesserInterface;
+use Symfony\Component\Mime\MimeTypeGuesserInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 
@@ -15,20 +15,12 @@ use MetaSyntactical\Mime\Magic;
  */
 class PhpMimeTypeGuesser implements MimeTypeGuesserInterface
 {
-    /**
-     * Returns whether this guesser is supported on the current OS/PHP setup
-     *
-     * @return Boolean
-     */
-    public static function isSupported()
+    public function isGuesserSupported(): bool
     {
         return class_exists('MetaSyntactical\\Mime\\Magic');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function guess($path)
+    public function guessMimeType(string $path): ?string
     {
         if (!is_file($path)) {
             throw new FileNotFoundException($path);

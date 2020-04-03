@@ -55,10 +55,9 @@ class PhpMimeTypeGuesserTest extends TestCase
      */
     public function testGuessingMimeTypeOfNonExistingFileResultsInException(): void
     {
-        $this->setExpectedException(
-            InvalidArgumentException::class,
-            'file does not exist'
-        );
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('file does not exist');
+
         $this->object->guessMimeType(__DIR__ . '/_Data/NonExisting.jpg');
     }
 }

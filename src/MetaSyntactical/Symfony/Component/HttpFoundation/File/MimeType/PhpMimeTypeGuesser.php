@@ -17,34 +17,20 @@ class PhpMimeTypeGuesser implements MimeTypeGuesserInterface
 {
     public function isGuesserSupported(): bool
     {
-        return class_exists('MetaSyntactical\\Mime\\Magic');
+        return class_exists(Magic::class);
     }
 
     public function guessMimeType(string $path): ?string
     {
-        if (!is_file($path)) {
-            throw new FileNotFoundException($path);
+        if (!is_file($path) || !is_readable($path)) {
+            throw new InvalidArgumentException(sprintf('The "%s" file does not exist or is not readable.', $path));
         }
 
-        if (!is_readable($path)) {
-            // @codeCoverageIgnoreStart
-            throw new AccessDeniedException($path);
+        if (!$this->isGuesserSupported()) {
+            throw new LogicException(sprintf('The "%s" guesser is not supported.', __CLASS__));
         }
-        // @codeCoverageIgnoreEnd
 
-        if (!self::isSupported()) {
-            // @codeCoverageIgnoreStart
-            return null;
-        }
-        // @codeCoverageIgnoreEnd
-
-        if (!$magic = new Magic()) {
-            // @codeCoverageIgnoreStart
-            return null;
-        }
-        // @codeCoverageIgnoreEnd
-
-        return $magic->getMimeType($path);
+        return (new Magic())->getMimeType($path);
     }
 }
 

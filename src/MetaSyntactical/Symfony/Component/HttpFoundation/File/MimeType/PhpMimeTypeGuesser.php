@@ -2,9 +2,9 @@
 
 namespace MetaSyntactical\Symfony\Component\HttpFoundation\File\MimeType;
 
-use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesserInterface;
-use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
-use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
+use Symfony\Component\Mime\MimeTypeGuesserInterface;
+use Symfony\Component\Mime\Exception\InvalidArgumentException;
+use Symfony\Component\Mime\Exception\LogicException;
 
 use MetaSyntactical\Mime\Magic;
 
@@ -15,44 +15,22 @@ use MetaSyntactical\Mime\Magic;
  */
 class PhpMimeTypeGuesser implements MimeTypeGuesserInterface
 {
-    /**
-     * Returns whether this guesser is supported on the current OS/PHP setup
-     *
-     * @return Boolean
-     */
-    public static function isSupported()
+    public function isGuesserSupported(): bool
     {
-        return class_exists('MetaSyntactical\\Mime\\Magic');
+        return class_exists(Magic::class);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function guess($path)
+    public function guessMimeType(string $path): ?string
     {
-        if (!is_file($path)) {
-            throw new FileNotFoundException($path);
+        if (!is_file($path) || !is_readable($path)) {
+            throw new InvalidArgumentException(sprintf('The "%s" file does not exist or is not readable.', $path));
         }
 
-        if (!is_readable($path)) {
-            // @codeCoverageIgnoreStart
-            throw new AccessDeniedException($path);
+        if (!$this->isGuesserSupported()) {
+            throw new LogicException(sprintf('The "%s" guesser is not supported.', __CLASS__));
         }
-        // @codeCoverageIgnoreEnd
 
-        if (!self::isSupported()) {
-            // @codeCoverageIgnoreStart
-            return null;
-        }
-        // @codeCoverageIgnoreEnd
-
-        if (!$magic = new Magic()) {
-            // @codeCoverageIgnoreStart
-            return null;
-        }
-        // @codeCoverageIgnoreEnd
-
-        return $magic->getMimeType($path);
+        return (new Magic())->getMimeType($path);
     }
 }
 

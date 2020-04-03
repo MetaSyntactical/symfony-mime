@@ -3,8 +3,8 @@
 namespace MetaSyntactical\Symfony\Component\HttpFoundation\File\MimeType;
 
 use Symfony\Component\Mime\MimeTypeGuesserInterface;
-use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
-use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
+use Symfony\Component\Mime\Exception\InvalidArgumentException;
+use Symfony\Component\Mime\Exception\LogicException;
 
 use MetaSyntactical\Mime\Magic;
 
